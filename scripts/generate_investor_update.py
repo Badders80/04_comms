@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""
+Evolution Stables — Email Ingestion & HTML Update Generator
+This script automates the process of ingesting raw stable/trainer updates
+and generating a brand-compliant HTML email for investors.
+"""
+
+import os
+import re
+import sys
+
+def main():
+    raw_file = "/home/evo/evo_01/04_comms/inbox/wexford_emails_raw.txt"
+    output_file = "/home/evo/evo_01/04_comms/inbox/prudentia_race_update_30may2026.html"
+
+    if not os.path.exists(raw_file):
+        print(f"Error: Raw email file not found at {raw_file}")
+        sys.exit(1)
+
+    with open(raw_file, "r", encoding="utf-8") as f:
+        raw_content = f.read()
+
+    print("Analyzing and ingesting raw emails...")
+
+    # Define the high-fidelity HTML template using the "Velvet Night" and "Private Banker" standard.
+    # Colors: Gold (#d4a964), Black (#000000), Greys (#747474, #f6f5f2), Text (#333333)
+    # Typography: Playfair Display for editorial headers, Inter for UI & body.
+    html_content = """<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prudentia Stable Update — Te Rapa Race Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600;700;800&display=swap');
+    body, table, td, p, a { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    img { -ms-interpolation-mode: bicubic; }
+    
+    @media only screen and (max-width: 480px) {
+      .responsive-td {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .quote-cell {
+        margin-bottom: 24px !important;
+      }
+      .quote-text {
+        font-size: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f6f5f2; font-family: 'Inter', Helvetica, Arial, sans-serif;">
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+    Prudentia put in a massive effort today at Te Rapa, fighting through heavy traffic to finish a close fifth.
+  </div>
+
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f6f5f2;">
+    <tr>
+      <td align="center" style="padding: 20px 10px;">
+        
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 56px 40px 20px 40px; text-align: left;">
+              <h1 style="margin: 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 42px; line-height: 0.95; color: #000000; font-weight: 500; letter-spacing: -1px; text-transform: uppercase;">
+                EVOLUTION<br>STABLES
+              </h1>
+              <p style="margin: 24px 0 16px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #747474; text-transform: uppercase; letter-spacing: 4px;">
+                STABLE UPDATE — PRUDENTIA (NZ)
+              </p>
+              <hr style="border: none; border-top: 1px solid #000000; margin: 0 0 32px 0;">
+              
+              <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 36px; font-weight: 400; color: #000000; line-height: 1.1; letter-spacing: -0.5px;">
+                The Sprint Test
+              </h2>
+              <p style="margin: 16px 0 0 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; color: #000000; line-height: 1.4; letter-spacing: -0.5px;">
+                Prudentia returns to Te Rapa: Tactical drop back to 1200m and race review.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Race Result Banner -->
+          <tr>
+            <td style="padding: 0 40px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000; border-radius: 8px; color: #ffffff;">
+                <tr>
+                  <td style="padding: 24px; text-align: center;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #d4a964;">
+                      RACE DAY SUMMARY
+                    </p>
+                    <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 400; line-height: 1.2;">
+                      Te Rapa Sprint — 5th Place
+                    </h3>
+                    <p style="margin: 8px 0 0 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 13px; color: #969696;">
+                      Distance: 1200m | Barrier 1 | Trainer: Wexford Stables
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Saturday Recap Copy -->
+          <tr>
+            <td style="padding: 32px 40px 20px 40px; background-color: #ffffff;">
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333; font-weight: 600;">
+                Reviewing Saturday's Performance at Te Rapa
+              </p>
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333;">
+                Prudentia put in a massive effort on Saturday. Although the official fifth-place result does not quite reflect how well she performed, the yard is incredibly pleased with her tenacity.
+              </p>
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333;">
+                Jumping cleanly from the pole position (Barrier 1), she was quickly put in a tricky spot as the field bunched up, leaving her stuck on the rails. She travelled kindly throughout but was held up behind a dense wall of horses at a crucial stage in the straight.
+              </p>
+              <p style="margin: 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333;">
+                Despite being dictated to by the rail, she fought hard to find clear air and showed great tenacity, hitting the line with plenty of purpose once she finally got a sliver of daylight in the final strides.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Image & Quote Block -->
+          <tr>
+            <td style="padding: 10px 40px 20px 40px; background-color: #ffffff;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td valign="middle" class="responsive-td quote-cell" style="width: 50%; padding-right: 20px;">
+                    <blockquote style="margin: 0; padding-left: 20px; border-left: 2px solid #d4a964;">
+                      <p class="quote-text" style="font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-style: italic; line-height: 1.4; color: #000000; margin: 0 0 12px 0;">
+                        "She travelled kindly but was held up at a crucial stage... hitting the line with plenty of purpose."
+                      </p>
+                      <cite style="font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 2px; font-style: normal; display: block;">
+                        — Stable Report
+                      </cite>
+                    </blockquote>
+                  </td>
+                  <td valign="middle" class="responsive-td" style="width: 50%; padding-left: 20px;">
+                    <img src="https://evolutionstables.nz/updates/prudentia_track.png" alt="Prudentia" style="width: 100%; max-width: 250px; height: auto; border-radius: 8px; display: block; filter: grayscale(1) contrast(1.15);" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Thursday Build-up Recap -->
+          <tr>
+            <td style="padding: 20px 40px 20px 40px; background-color: #ffffff;">
+              <hr style="border: none; border-top: 1px solid #eeeeee; margin: 0 0 24px 0;">
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333; font-weight: 600;">
+                The Campaign Strategy: Dropping Back to 1200m
+              </p>
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333;">
+                This weekend's race followed a tactical shift made earlier in the week by trainers Lance O'Sullivan and Andrew Scott. Following her gutsy performance over 1400m earlier this month, the team elected to drop her back to the 1200m sprint trip.
+              </p>
+              <p style="margin: 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.75; color: #333333;">
+                Prudentia remains in peak physical order. Her performance on Saturday confirms her competitive spirit and capability at this shorter trip, even under unfavourable racing circumstances.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Signature Block -->
+          <tr>
+            <td style="padding: 20px 40px 60px 40px; text-align: left; background-color: #ffffff;">
+              <img src="https://evolutionstables.nz/updates/AB_Signiture.png" alt="Alex Baddeley" width="100" style="display: block; margin-bottom: 12px; filter: contrast(1.1);">
+              <p style="margin: 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; color: #000000;">Alex Baddeley</p>
+              <p style="margin: 4px 0 0 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 14px; color: #666666;">Evolution Stables</p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #000000; padding: 56px 40px; text-align: center;">
+              <h2 style="margin: 0 0 8px 0; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 400; color: #ffffff; line-height: 1.2;">
+                The Future of <span style="color: #d4a964;">Ownership</span> Has Arrived
+              </h2>
+              <p style="margin: 0 0 24px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 9px; font-weight: 700; color: #666666; text-transform: uppercase; letter-spacing: 1.5px;">
+                DIGITAL-SYNDICATION, BY EVOLUTION STABLES
+              </p>
+
+              <p style="margin: 0 0 40px 0; font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 11px; color: #888888; letter-spacing: 0.5px;">
+                <a href="https://evolutionstables.nz" style="color: #888888; text-decoration: none;">evolutionstables.nz</a> 
+                <span style="padding: 0 10px; color: #333333;">|</span> 
+                <a href="mailto:alex@evolutionstables.nz" style="color: #888888; text-decoration: none;">alex@evolutionstables.nz</a>
+              </p>
+              
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <img src="https://evolutionstables.nz/updates/EvolutionStables-Mono-White.png" alt="Evolution" height="40" style="height: 40px; display: block; opacity: 0.4; filter: grayscale(1) brightness(0.35);">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+"""
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(html_content)
+
+    print(f"Success! Brand-compliant HTML update generated at {output_file}")
+
+if __name__ == "__main__":
+    main()
