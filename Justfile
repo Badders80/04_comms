@@ -1,27 +1,12 @@
-# ═══════════════════════════════════════════════════════════
-# Taskmaster Control Tower
-# ═══════════════════════════════════════════════════════════
+# 04_comms — pipelines live in .agents/skills/
 
-# List all tasks
-task-list:
-    @python3 ../_taskmaster/task_list.py
+default:
+    @just --list
 
-# Show the next ready task
-task-next:
-    @python3 ../_taskmaster/task_next.py
+# Push investor update HTML to Gmail drafts (gws)
+push-draft html subject:
+    ./scripts/push_investor_update_draft.sh "{{html}}" "{{subject}}"
 
-# Show task details
-task-show id:
-    @python3 ../_taskmaster/task_show.py {{id}}
-
-# Mark task as in-progress
-task-start id:
-    @python3 ../_taskmaster/task_start.py {{id}}
-
-# Mark task as done
-task-done id:
-    @python3 ../_taskmaster/task_done.py {{id}}
-
-# Create a sprint markdown file from task IDs
-sprint-start name *tasks:
-    @python3 ../_taskmaster/sprint_start.py "--tasks={{tasks}}" "{{name}}"
+# Deploy update assets to 02_website + Vercel prod
+deploy-update slug *extra:
+    ./scripts/deploy_investor_update_assets.sh "{{slug}}" {{extra}}
