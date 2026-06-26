@@ -15,6 +15,7 @@ Setting up the repository framework under `04_comms` to serve as the campaign pl
 
 | Date | Decision | Why |
 |------|----------|-----|
+| 2026-06-11 | Ingested 10 June 2026 Update | Compiled brand-compliant landing page and email updates for Prudentia from the audio transcript, and registered to SQLite ledger (ID 56) and catalog logs. |
 | 2026-05-27 | Repository Initialization | Created `04_comms` following `_template` scaffolding to establish a focused copywriting and campaign scheduling space. |
 
 ---

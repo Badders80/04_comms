@@ -1,3 +1,7 @@
+# Wexford / trainer raw ingest — append newest email at bottom.
+# Agent reads this when user says "ingest wexford emails".
+# Classify: nomination/fields → pre-race | result/trot-up → post-race | withdrawn/sore → pivot
+
 Subject: The Sprint Test: Prudentia Returns to Te Rapa this Saturday -> FIFTH
 
 Alex Baddeley <alex@evolutionstables.nz>

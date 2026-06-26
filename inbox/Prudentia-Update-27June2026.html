@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Prudentia — Tauranga Race Preview | Evolution Stables</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { overflow-x: hidden; width: 100%; }
+      body {
+        background: #ffffff;
+        color: #000000;
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 430px;
+        min-height: 1122px;
+      }
+      img, iframe, video { max-width: 100%; }
+      .page-container {
+        width: 100%;
+        min-height: 1122px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        width: 100%;
+        max-width: 430px;
+        background: #ffffff;
+        padding: 8px 0 12px 0;
+        border-bottom: 1px solid #000000;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 4px;
+      }
+      .brand-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-mark svg {
+        width: 28px;
+        height: 24px;
+        fill: #000000;
+        flex-shrink: 0;
+      }
+      .brand-text {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        color: #000000;
+      }
+      .template-type {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #666666;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+      }
+      .content-layout {
+        display: flex;
+        flex-direction: column;
+      }
+      .headline {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 44px;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: #000000;
+        letter-spacing: -0.5px;
+      }
+      .subheadline {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #222222;
+        margin-bottom: 24px;
+        text-align: justify;
+        hyphens: none;
+      }
+      .content {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #1a1a1a;
+        margin-bottom: 16px;
+        text-align: justify;
+        hyphens: none;
+      }
+      .content p { margin: 0; }
+      .quote-sidebar {
+        background: #fafafa;
+        padding: 32px 24px;
+        border-left: 3px solid #d4a964;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 24px 0;
+      }
+      .quote-sidebar blockquote {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        line-height: 1.7;
+        color: #000000;
+        margin: 0;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: -0.01em;
+      }
+      .quote-sidebar cite {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        font-style: normal;
+        color: #666666;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: left;
+        display: block;
+        letter-spacing: 1px;
+      }
+      .quote-sidebar .quote-mark {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 32px;
+        line-height: 0.8;
+        vertical-align: top;
+        margin-right: 4px;
+      }
+      .media-container-landscape {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .sidebar-media-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        object-fit: cover;
+      }
+      .media-caption {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        color: #666666;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .mobile-signature-wrap {
+        margin-top: 8px;
+        margin-bottom: 20px;
+      }
+      .mobile-signature-image {
+        width: 180px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .bullet-highlight {
+        background: #000000;
+        color: #ffffff;
+        padding: 28px 24px;
+        border-left: 3px solid #d4a964;
+        margin: 24px 0;
+      }
+      .bullet-list {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #ffffff;
+        list-style: disc;
+        margin: 0;
+        padding-left: 22px;
+        text-align: left;
+      }
+      .bullet-list li { margin-bottom: 12px; }
+      .bullet-list li:last-child { margin-bottom: 0; }
+      .bullet-list li::marker { color: #ffffff; }
+      .empty-note {
+        margin-top: 12px;
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        color: #666666;
+      }
+      footer {
+        width: 100%;
+        background: #000000;
+        color: #ffffff;
+        padding: 56px 24px 60px;
+        margin-top: 72px;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        text-align: center;
+      }
+      .footer-hero h2 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #ffffff;
+        margin: 0 0 14px 0;
+      }
+      .highlight-ownership { color: #d4a964; }
+      .footer-hero p {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        color: #888888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0;
+      }
+      .footer-minor {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        color: #bdbdbd;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <header>
+        <div class="header-content">
+          <div class="brand-mark">
+            <svg viewBox="0 0 107.78 94.41" aria-hidden="true"><path d="M85.38,15.12c-1.96-2.03-4.1-3.89-6.38-5.55h0c-.87-.64-1.83-1.28-2.91-1.96h0C68.13,2.63,58.94,0,49.51,0,22.21,0,0,21.82,0,48.64c0,19.79,12.04,37.46,30.68,44.99,0,0,1.47,.59,2.37,.78l14.15-24.51,19.8,17.29L107.78,15.12h-22.4Zm-7.62,29.2l-13.67,24.16-11.69-9.3,5.72-10.28,2.43,1.12c-2.25-3.1-4.71-9.52-4.73-13.31l-25.3,43.82c-11.55-6.55-18.77-18.59-18.77-31.9-.01-20.33,16.93-36.89,37.76-36.89,7.23,0,14.26,2.01,20.34,5.82,.85,.53,1.58,1.02,2.23,1.5h0c2.31,1.68,4.42,3.63,6.28,5.78l1.76,2.03h14.26l-12.13,9.55-4.48,7.92v-.02Z"/></svg>
+            <span class="brand-text">Evolution Stables</span>
+          </div>
+          <div class="template-type">Investor Update</div>
+        </div>
+      </header>
+
+      <main>
+        <div class="content-layout">
+          <h1 class="headline">Back to Maiden Ground</h1>
+          <div class="subheadline">Prudentia broke her maiden at Tauranga. This Saturday she returns to the same track — recovered, sharp in her work, and accepted for Race 7 from Barrier 1. Can she do it again?</div>
+
+          <div class="content">
+            <p>A minor front-foot soreness in early June prompted a tactical withdrawal from her 13 June engagement — the right call to protect the longer campaign. Lance O'Sullivan and Andrew Scott kept her fit through swimming before bringing her back to trackwork with protective pads on both front feet. Her movement is fluid again, and recent work — including a partnered grass gallop with stablemate Ribkraka — has her pulling up clean and sharp.</p>
+          </div>
+
+          <div class="quote-sidebar">
+            <blockquote><span class="quote-mark">&ldquo;</span>She&rsquo;s coming right, but she just ran out of runway to get there this Saturday. We&rsquo;ve kept her swimming to maintain fitness, and we&rsquo;ll target Tauranga in two weeks.<span class="quote-mark">&rdquo;</span></blockquote>
+            <cite>&mdash; Andrew Scott, Wexford Stables</cite>
+          </div>
+
+          <div class="content">
+            <p>She lines up in Race 7 (BM75) over 1400m at 4:21 PM on Saturday, 27 June. Barrier 1, minimum weight 54.0kg, and Masa Hashizume is booked to ride. Ribkraka (Barrier 6) also takes her place for Wexford in the same race.</p>
+          </div>
+
+          <!-- SWAP: replace src when Masa + Prudentia image is uploaded -->
+          <div class="quote-sidebar">
+            <div class="media-container-landscape">
+              <img class="sidebar-media-image" src="https://evolutionstables.nz/updates/prudentia_masa_tauranga_27june2026.jpg" alt="Prudentia with Masa Hashizume" />
+            </div>
+            <p class="media-caption">Prudentia with Masa Hashizume &mdash; back together for Saturday&rsquo;s BM75 at Tauranga.</p>
+          </div>
+
+          <div class="content">
+            <p>The yard is pleased with where she sits physically. She has the weight, the draw, a jockey who knows her, and conditions that suit. Now it comes down to racing luck on the day.</p>
+          </div>
+
+          <div class="mobile-signature-wrap">
+            <img class="mobile-signature-image" src="https://evolutionstables.nz/updates/AB_Signiture.png" alt="Alex Baddeley" />
+          </div>
+
+          <div class="bullet-highlight">
+            <ul class="bullet-list">
+              <li><strong>54.0kg minimum weight</strong> &mdash; gives away up to 5.5kg to the top weight on a testing winter track</li>
+              <li><strong>Barrier 1</strong> &mdash; Masa can save ground early or search for better going out wide</li>
+              <li><strong>Tauranga</strong> &mdash; maiden-win venue; she excels on the turning layout and soft-to-heavy footing</li>
+              <li><strong>Saturday 27 June, 4:21 PM</strong> &mdash; Race 7, BM75, 1400m</li>
+            </ul>
+          </div>
+
+          <p class="empty-note">We&rsquo;ll follow up with a full post-race report after Saturday.</p>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer-hero">
+          <h2>The Future of <span class="highlight-ownership">Ownership</span><br />Has Arrived</h2>
+          <p>Digital-Syndication, by Evolution Stables</p>
+        </div>
+        <p class="footer-minor">Investor communications for syndicate members.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "slug": "social_prudentia_tauranga_27june2026",
+  "type": "poster",
+  "status": "posted_manually",
+  "posted_at": "2026-06-26",
+  "posted_via": "manual",
+  "channel": "x_single_image",
+  "post_asset": "poster.png",
+  "canva_design_id": "DAHNpr1STP4",
+  "canva_edit_url": "https://www.canva.com/design/DAHNpr1STP4/Lae-YwKvf-E3w7CzMy1B_g/edit",
+  "canva_master_for_future_copies": "DAHNpr1STP4",
+  "source_master": "DAHLfddH_NM",
+  "layout_rules": [
+    "hero_image_full_bleed_not_inset",
+    "prudentia_on_dark_band_over_photo",
+    "context_tag_next_up",
+    "telemetry_pipes_1400M_VENUE_BENCHMARK"
+  ],
+  "slides": [
+    {"file": "poster.png", "dimensions": "1080x1350", "role": "poster", "approved": true},
+    {"file": "slide-01-approved.png", "dimensions": "1080x1350", "role": "hero"},
+    {"file": "slide-02-approved.png", "dimensions": "1080x1350", "role": "action", "optional": true},
+    {"file": "slide-03.png", "dimensions": "1600x1080", "role": "cta", "optional": true, "superseded": true}
+  ],
+  "hero_asset": "https://www.evolutionstables.nz/updates/prudentia_masa_tauranga_27june2026.jpg",
+  "caption_file": "x_caption.txt",
+  "race": {
+    "horse": "Prudentia",
+    "venue": "Tauranga",
+    "date": "2026-06-27",
+    "race": "R7 BM75",
+    "distance": "1400m",
+    "time": "4:21pm",
+    "barrier": 1,
+    "weight": "54.0kg",
+    "jockey": "Masa Hashizume"
+  }
+}

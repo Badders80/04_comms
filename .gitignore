@@ -1,0 +1,13 @@
+# Environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Social post Canva working drafts (approved + poster committed)
+inbox/social_*/slide-01.png
+inbox/social_*/slide-02.png
+inbox/social_*/slide-03.png
