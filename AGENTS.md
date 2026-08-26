@@ -1,38 +1,51 @@
-# 04_comms — Agent Orchestration Rules
+# 04_comms — Agent rules
+
+**Session root:** `/home/evo/evo_01/04_comms`. Boot: [`continue.md`](continue.md) → [`STATE.md`](STATE.md) → [`README.md`](README.md).
 
 ## Identity
-You are the **04_comms Build & Strategy Agent**. You design social media campaigns, draft high-fidelity copywriting assets, and schedule editorial calendars.
+
+Primary: **investor update emails** (copy → hosted HTML → Gmail draft).  
+Secondary: **quarterly PDFs** (`reports/quarterly/`) and **social** (`social-post-pipeline`).
+
+**Reports rule:** Build here. Final PDFs → `_assets/horses/{slug}/documents/`. Index in `01_evolution/horses/{slug}/documents.md`. Comms is not the PDF archive.
 
 ---
 
-## Core Laws
-1. **This project never writes canonical truth.** All database writes go through `01_evolution/` SSOT and Content APIs.
-2. **Brand Voice is absolute.** All drafted copy must adhere strictly to `strategy/INVESTOR_UPDATE_VOICE.md` (emails) and `strategy/BRAND_KIT.md` §3 (all comms).
-3. **Lead with the horse, never the tech.** Ban the words "crypto", "blockchain", "RWA", and "Web3" from all consumer-facing copy. Highlight the stable, the trainer, the turf, and the genuine thrill of ownership.
+## Investor updates (default)
+
+1. Load `.agents/skills/investor-update-pipeline/SKILL.md`  
+2. Do not ask horse/type if inferable  
+3. Stay in folders mapped in `README.md`  
+4. Ship with `just ship {slug} "{subject}" {hero}` when SEND + hosted HTML exist  
+5. Pass horse so BCC loads from `inbox/bcc_lists/{slug}.json`  
+6. Reply: **Check your drafts.** + subject + preview URL  
 
 ---
 
-## Data Source
-- Canonical data: `01_evolution/` SSOT API
-- Assets: `Evolution_Content/assets/` or GCS
-- Design tokens: `_shared/brand/` (consumed, never authored here)
+## Core laws
+
+1. **No canonical horse truth here** — facts from `01_evolution/`.  
+2. **Voice is absolute** — canonical: `evo_00/doc/ABOUT_AND_AUDIENCE.md` + `evo_00/doc/VOICE_AND_TONE_MANUAL.md` (identity: `evo_00/doc/IDENTITY.md`). Email shape: `strategy/INVESTOR_UPDATE_VOICE.md`. Ignore `strategy/_archive/`, `_shared/dna/` (retired), and legacy DNA brand trees for new copy.  
+3. **Lead with the thoroughbred** — ban crypto, blockchain, RWA, Web3, and Tokinvest partnership claims in consumer-facing copy.  
 
 ---
 
-## Build Order
-1. Scaffold project and establish `campaigns/` and `strategy/` structures
-2. Wire up trigger scripts to schedule content via `01_evolution/` API
-3. Maintain copywriting drafts in the campaign backlog
-4. Verify campaign schedules against the API handshake
-5. Update `BUILD_SUMMARY.md`
+## Data / assets
+
+- Horse/race: `01_evolution/horses/`  
+- Media: `_assets/horses/`, `_assets/brand/`  
+- Design tokens: `_assets/brand/colors/` (consume, do not invent)  
 
 ---
 
 ## Verification
-Every task must end with a verification command and its output. No exceptions.
+
+Every task ends with a verification command and its output.
 
 ---
 
 ## Related
-- [`../01_evolution/AGENTS.md`](../01_evolution/AGENTS.md) — Backend agent rules
-- [`HANDSHAKE.md`](HANDSHAKE.md) — API contract with `01_evolution/`
+
+- [`README.md`](README.md) — operator paths  
+- [`BUILD_SUMMARY.md`](BUILD_SUMMARY.md) — map of what exists  
+- [`strategy/README.md`](strategy/README.md) — foundation index  
