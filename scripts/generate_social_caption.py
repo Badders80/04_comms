@@ -11,7 +11,7 @@ from pathlib import Path
 
 COMMS_ROOT = Path(__file__).resolve().parents[1]
 INBOX = COMMS_ROOT / "inbox"
-TEMPLATES = Path(__file__).resolve().parents[2] / "03_studio" / "templates"
+TEMPLATES = Path(__file__).resolve().parents[3] / "studio" / "legacy" / "templates"
 
 PARTNER_TAGS = "@WexfordStables @BAXLTD @Tokinvest_Cap"
 

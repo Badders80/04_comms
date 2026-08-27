@@ -10,14 +10,23 @@ EXTRA=("$@")
 
 cd "$REPO"
 
-git add \
-  "public/updates/${SLUG}_email.html" \
-  "public/updates/evolution-stables-logo-header.jpg" \
-  "public/updates/EvolutionStables-Mono-White.png" \
-  public/updates/AB_Signiture.png
-
+ADD_LIST=(
+  "public/updates/${SLUG}.html"
+  "public/updates/${SLUG}_email.html"
+  "public/updates/evolution-stables-wordmark-muted-grey.jpg"
+  "public/updates/EvolutionStables-Mono-White.png"
+  "public/updates/AB_Signiture.png"
+)
 for f in "${EXTRA[@]}"; do
-  git add "public/updates/${f}"
+  ADD_LIST+=("public/updates/${f}")
+done
+
+for path in "${ADD_LIST[@]}"; do
+  if [[ -f "$path" ]]; then
+    git add "$path"
+  else
+    echo "Skip missing: $path"
+  fi
 done
 
 if git diff --cached --quiet; then
@@ -28,7 +37,7 @@ else
 fi
 
 echo "Deploying to Vercel production ..."
-vercel --prod --yes
+npx vercel --prod --yes
 
 HERO=""
 for f in "${EXTRA[@]}"; do
@@ -38,4 +47,4 @@ for f in "${EXTRA[@]}"; do
   fi
 done
 
-"/home/evo/evo_01/04_comms/scripts/verify_investor_update_assets.sh" "$HERO"
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/verify_investor_update_assets.sh" "$HERO"

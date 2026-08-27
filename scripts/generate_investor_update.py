@@ -10,8 +10,8 @@ import re
 import sys
 
 def main():
-    raw_file = "/home/evo/evo_01/04_comms/inbox/wexford_emails_raw.txt"
-    output_file = "/home/evo/evo_01/04_comms/inbox/prudentia_race_update_30may2026.html"
+    raw_file = os.path.join(os.path.dirname(__file__), "..", "inbox", "wexford_emails_raw.txt")
+    output_file = os.path.join(os.path.dirname(__file__), "..", "inbox", "prudentia_race_update_30may2026.html")
 
     if not os.path.exists(raw_file):
         print(f"Error: Raw email file not found at {raw_file}")
